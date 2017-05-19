@@ -1,102 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-		<!-- Page Title: find this on the page tab -->
-		<title>
-		Bootstrap Vue2 App
-		</title>
-
-		<meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-	  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-
-		<!-- Local styles. you can of course add a .css file here for cleaner interface -->
-		<style type="text/css">
-
-			.isRed {
-				color:red;
-			}
-
-		</style>
-
-	</head>
-
-	<!-- Visible page content goes below here -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>One Page Awesomer</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 	<body>
-			<div class="container-fluid">
+	<div id="root">
 
+		<section class="section">
 
+		    <div class="container">
 
-		<h1>Bootstrap Version. Woop woop</h1>
+		      <div class="columns">
 
-			<a href="../index.html">
-				<button class="btn btn-default">
-					<span class="fa fa-fw fa-chevron-left"></span> Back Home
-				</button>
-			</a>
+			      <div class="column"> <!-- search column -->
 
-			<br>
+			      	<h3 class="title">Search Titles</h1>
 
-			<hr>
+		      		<hr>
 
-		<div id="root"><!-- This is IMPORTANT!
-		It is the root (main) container for the Vue2 script -->
+		      		<p>
+		      			<input class="input is-medium" type="text" v-model="keyword" name="search" placeholder="Search...">
+		      		</p>
+					
+					<br>
 
-		<div class="col-md-4"> <!-- page left -->
+					<p>
+						<a class="button is-primary is-outlined" href="../index.html">Home</a>
+					</p>
+					
 
-			<input class="form-control input-lg" type="text" v-model="keyword" name="search" placeholder="Search..."> <!-- This is IMPORTANT!
-			It is the binding to the Vue2 model that processes the data -->
+			      </div>
 
-			<div class="help-block">Type keyword search terms</div>
+		      	<div class="column is-two-thirds"> <!-- post column -->
 
-		</div> <!-- end page left -->
+		      		<h3 class="title">Posts</h1>
+		      		<hr>
 
-		<div class="col-md-8"> <!-- page right -->
+						<div v-for="post in filterlist">
 
-			<div v-for="post in filterlist"> <!-- This is IMPORTANT!
-			It is the 'for' loop, or machine that cycles over the data -->
+						<div class="box">
 
-				<div class="panel panel-default">
-					<div class="panel-heading">
+							<article class="media">
 
-						<h3><a class="isRed" :href="post.link">{{post.title}}</a></h3>
+    							<div class="media-left">
 
-					</div>
-					<div class="panel-body">
+      								<figure class="image is-64x64">
 
-						<img class="img-circle" :src="post.img"> <!-- this is bound to the img slot -->
-						<h4><em>by {{post.author}}</em></h4>
+      									<img :src="post.img">
 
-						<p>{{post.body}}</p> <!-- this is bound to the body slot -->
+      								</figure>
 
-					</div>
+  								</div>
 
-				</div> <!-- end panel -->
+								<div class="media-content">
 
-			</div> <!-- end filterlist -->
+						      		<div class="content">
 
-		</div> <!-- end page right -->
+						      			<a :href="post.link">{{post.title}}</a>
 
-	</div>  <!-- end root div -->
+						      			<p><em>by {{post.author}}</em></p>
 
-</div> <!-- end page container -->
+										<p>{{post.body}}</p>
+							        
+							        </div> <!-- end content -->
 
-</body>
+							        <nav class="level is-mobile">
 
-	<!-- Javascript must be placed here at the bottom of the page
-		so that all the HTML content will be processed fist by the browser
-		then procesed by the javascript -->
+								        <div class="level-left">
 
-	<!-- This Vue2 script package is pulled in remotely via a CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+							          		<a class="level-item">
+							            		<span class="icon is-small"><i class="fa fa-reply"></i></span>
+						          			</a>
+							          		<a class="level-item">
+								            	<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+							          		</a>
+							          		<a class="level-item">
+								            	<span class="icon is-small"><i class="fa fa-heart"></i></span>
+							          		</a>
+
+								        </div> <!-- end level-left -->
+
+							      	</nav>
+
+						        </div> <!-- end media content -->
+
+				        	</article>
+							
+						</div> <!-- end box -->
+							
+						<br>
+
+						</div> <!-- end v-for loop area -->
+
+		  			</div> <!-- end Posts column -->
+
+				</div> <!-- end columns -->
+
+			</diz> <!-- end container -->
+
+		</section>
+
+	</div> <!-- end Vue2 root div-->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="content has-text-centered">
+				<p>
+					<strong>Footer</strong> which means this is the bottom of the page.
+				</p>
+				<p>
+					<a class="icon" href="#">
+					  <i class="fa fa-diamond"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+	
+	</body>
+
 	<script src="https://unpkg.com/vue" ></script>
-
-	<!-- This is your local javascript that will use Vue2 -->
-	<script src="bootstrap.js"></script>
+	<script src="awesome.js"></script>
 
 </html>
